@@ -4,26 +4,15 @@ import './List.css';
 
 
 
-function List() {
+function List(props) {
 
-    const [recipes, setRecipes] = useState(RecipeBook)
+   
 
-    const deleteItem = (itemsDelete) => {
-        const newRecipes = recipes.filter((recipe) => {
-            if (recipe.id !== itemsDelete) {
-                return true
-            }
-            else {
-                return false
-            }
-        })
 
-        setRecipes(newRecipes)
-    }
 
     return (
         <section>
-            {recipes.map((recipeObj) => {
+            {props.recipeList.map((recipeObj) => {
                 return (
                     <div key={recipeObj.id} className="card">
                         <img src={recipeObj.image} alt={recipeObj.name} className="card-image"></img>
@@ -35,7 +24,7 @@ function List() {
                                 <span className="healthy"> Healthy </span>
                             )}
                         </div>
-                        <button onClick={() => deleteItem(recipeObj.id)}>Delete recipe</button>
+                        <button onClick={() => props.deleteCallbBack(recipeObj.id)}>Delete recipe</button>
                     </div>
                 );
             })}
