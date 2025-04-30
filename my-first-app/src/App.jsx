@@ -13,11 +13,13 @@ import ItemDetails from './Components/ItemDetails';
 import NotFound from './Components/NotFound';
 import {Navbar} from './Components/Navbar'
 import { AddNewForm } from './Components/AddNewForm';
+import {SearchBar} from './Components/SearchBar'
  
 
 function App() {
   
   const [recipes, setRecipes] = useState(RecipeBook)
+  const [searchQuery, setSearchQuery] = useState('');
 
   const AddNewRecipe = (newRecipe) => {
     setRecipes ([newRecipe, ...recipes])
@@ -33,8 +35,14 @@ function App() {
         }
     })
 
-    setRecipes(newRecipes)
+    setRecipes(newRecipes);
+
+     
 }
+
+const filteredRecipes = recipes.filter((recipe) =>
+  recipe.name.toLowerCase().includes(searchQuery.toLowerCase())
+);
 
 
 
@@ -46,13 +54,14 @@ function App() {
         <Navbar />
         <Sidebar />
         <Header />
+        <SearchBar onSearch={setSearchQuery} />
         
         <div className="main-content">
           <Routes>
             <Route path="/" element={
               <>
                 
-                <Dashboard recipeList={recipes} deleteCallbBack={deleteItem} />
+                <Dashboard recipeList={filteredRecipes} deleteCallbBack={deleteItem} />
                
               </>
             } />
