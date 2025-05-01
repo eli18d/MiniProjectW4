@@ -14,7 +14,7 @@ import NotFound from './Components/NotFound';
 import {Navbar} from './Components/Navbar'
 import { AddNewForm } from './Components/AddNewForm';
 import {SearchBar} from './Components/SearchBar'
-import { BrowserRouter } from 'react-router-dom';
+
  
 
 function App() {
@@ -55,7 +55,7 @@ const isSecret = searchQuery.trim().toLowerCase() === 'florian';
 
   return (
 
-    <BrowserRouter basename="/MiniProjectW4">
+    <Router basename="/MiniProjectW4">
       <div className="app-container">
         {isSecret && (
           <video
@@ -63,7 +63,7 @@ const isSecret = searchQuery.trim().toLowerCase() === 'florian';
             loop
             className="background-video"
           >
-            <source src="./background/nekoYyo.mp4" type="video/mp4" />
+            <source src={`${import.meta.env.BASE_URL}background/nekoYyo.mp4`} type="video/mp4" />
            
           </video>
         )}
@@ -94,7 +94,7 @@ const isSecret = searchQuery.trim().toLowerCase() === 'florian';
         
         <Footer />
       </div>
-      </BrowserRouter>
+      </Router>
     
     
     
