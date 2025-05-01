@@ -46,7 +46,7 @@ const filteredRecipes = recipes.filter((recipe) =>
   recipe.keyWords.some(kw => kw.toLowerCase().includes(searchQuery.toLowerCase()))
 );
 
-const isSecret = searchQuery.trim().toLowerCase() === 'florian';
+
 
 
 
@@ -55,18 +55,8 @@ const isSecret = searchQuery.trim().toLowerCase() === 'florian';
 
   return (
 
-    <Router basename="/MiniProjectW4">
+    <Router>
       <div className="app-container">
-        {isSecret && (
-          <video
-            autoPlay
-            loop
-            className="background-video"
-          >
-            <source src={`${import.meta.env.BASE_URL}background/nekoYyo.mp4`} type="video/mp4" />
-           
-          </video>
-        )}
         <Navbar />
         <Sidebar />
         <Header />

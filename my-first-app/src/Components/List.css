@@ -230,5 +230,30 @@
     color: #666;
   }
   
+  .header,
+.navbar {
+
+  background-color: #fffafa; 
+  padding: 1.2rem 2rem;
+  color: #444;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 1500px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   
+}
+
+.navbar ,
+.header  {
+font-size: 1.em;
+  color: #bb5f5f;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 12px;
+  transition: color 0.2s ease;
+  margin-top: 10px;
+}
 
