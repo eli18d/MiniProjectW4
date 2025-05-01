@@ -41,8 +41,13 @@ function App() {
 }
 
 const filteredRecipes = recipes.filter((recipe) =>
-  recipe.name.toLowerCase().includes(searchQuery.toLowerCase())
+  recipe.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+  recipe.keyWords.some(kw => kw.toLowerCase().includes(searchQuery.toLowerCase()))
 );
+
+const isSecret = searchQuery.trim().toLowerCase() === 'florian';
+
+
 
 
 
@@ -51,21 +56,32 @@ const filteredRecipes = recipes.filter((recipe) =>
 
     <Router>
       <div className="app-container">
+        {isSecret && (
+          <video
+            autoPlay
+            loop
+            className="background-video"
+          >
+            <source src="./background/nekoYyo.mp4" type="video/mp4" />
+           
+          </video>
+        )}
         <Navbar />
         <Sidebar />
         <Header />
-        <SearchBar onSearch={setSearchQuery} />
+        
         
         <div className="main-content">
           <Routes>
             <Route path="/" element={
               <>
+                <SearchBar onSearch={setSearchQuery} />
                 
                 <Dashboard recipeList={filteredRecipes} deleteCallbBack={deleteItem} />
                
               </>
             } />
-            <Route path="/about" element={<AboutPage />} />
+            <Route path="/about" element={<AboutPage />}/>
 
             <Route path="/AddNewForm" element={<AddNewForm AddNewRecipe={AddNewRecipe}/>} />
 

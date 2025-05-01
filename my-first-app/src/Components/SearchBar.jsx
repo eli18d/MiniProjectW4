@@ -9,15 +9,18 @@ function SearchBar({onSearch}) {
         setQuery(value);
         onSearch(value);
       };
+
+     
     
 
     return (
-        <>
-        Search: 
-        <input value={query} onChange={handleSearch} type="type" />
+      <div className="searchbar-container">
+        <label className="search-input"> Search:</label>
+        <input value={query} onChange={handleSearch} type="text" 
         
-        </>
-    )
-}
+        />
+        </div>
+      );
+    }
 
 export {SearchBar};

@@ -12,15 +12,15 @@ function Dashboard(props) {
 
 
     return (
-        <section>
+        <section className="card-container">
             {props.recipeList.map((recipeObj) => {
                 return (
-                    <div key={recipeObj.id} className="card">
+                    <div key={recipeObj.id} >
                         <Link to={`/item/${recipeObj.id}`}>
                             <img src={recipeObj.image} alt={recipeObj.name} className="card-image"></img>
                             <h3 className="card-info"><strong>{recipeObj.name}</strong></h3>
-                            <p className="card-info"> Calories: {recipeObj.calories}</p>
-                            <p className="card-info"> Servings: {recipeObj.servings}</p>
+                            <p className="card-info">{recipeObj.cardDescription}</p>
+                            <p className="card-info"> Country: {recipeObj.country}</p>
                             <div className="label">
                                 {recipeObj.calories <= 300 && (
                                     <span className="healthy"> Healthy </span>
