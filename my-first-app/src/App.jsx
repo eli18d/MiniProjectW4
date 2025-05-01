@@ -14,6 +14,7 @@ import NotFound from './Components/NotFound';
 import {Navbar} from './Components/Navbar'
 import { AddNewForm } from './Components/AddNewForm';
 import {SearchBar} from './Components/SearchBar'
+import { BrowserRouter } from 'react-router-dom';
  
 
 function App() {
@@ -54,7 +55,7 @@ const isSecret = searchQuery.trim().toLowerCase() === 'florian';
 
   return (
 
-    <Router>
+    <BrowserRouter basename="/MiniProjectW4">
       <div className="app-container">
         {isSecret && (
           <video
@@ -76,7 +77,7 @@ const isSecret = searchQuery.trim().toLowerCase() === 'florian';
             <Route path="/" element={
               <>
                 <SearchBar onSearch={setSearchQuery} />
-                
+
                 <Dashboard recipeList={filteredRecipes} deleteCallbBack={deleteItem} />
                
               </>
@@ -93,7 +94,7 @@ const isSecret = searchQuery.trim().toLowerCase() === 'florian';
         
         <Footer />
       </div>
-    </Router>
+      </BrowserRouter>
     
     
     
