@@ -14,6 +14,7 @@ import NotFound from './Components/NotFound';
 import {Navbar} from './Components/Navbar'
 import { AddNewForm } from './Components/AddNewForm';
 import {SearchBar} from './Components/SearchBar'
+import { UpdateForm } from './Components/UpdateForm';
 
  
 
@@ -46,6 +47,13 @@ const filteredRecipes = recipes.filter((recipe) =>
   recipe.keyWords.some(kw => kw.toLowerCase().includes(searchQuery.toLowerCase()))
 );
 
+const updateRecipe = (updatedRecipe) => {
+  const updatedList = recipes.map(recipe =>
+    recipe.id === updatedRecipe.id ? updatedRecipe : recipe
+  );
+  setRecipes(updatedList);
+};
+
 
 
 
@@ -75,6 +83,8 @@ const filteredRecipes = recipes.filter((recipe) =>
             <Route path="/about" element={<AboutPage />}/>
 
             <Route path="/AddNewForm" element={<AddNewForm AddNewRecipe={AddNewRecipe}/>} />
+
+            <Route path="/edit/:id" element={<UpdateForm recipes={recipes} updateRecipe={updateRecipe} />} />
 
             <Route path="/item/:id" element={<ItemDetails recipes={recipes} />} />
             

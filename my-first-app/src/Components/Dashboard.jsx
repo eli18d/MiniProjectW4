@@ -26,8 +26,11 @@ function Dashboard(props) {
                                     <span className="healthy"> Healthy </span>
                                 )}
                             </div>
+                            <Link to={`/edit/${recipeObj.id}`} style={{ marginTop: '8px' , marginRight: '10px'}}>
+                            <button>Edit</button>
+                            </Link>
                         </Link>
-                        <button onClick={() => props.deleteCallbBack(recipeObj.id)}>Delete recipe</button>
+                        <button onClick={() => props.deleteCallbBack(recipeObj.id)}>Delete</button>
                     </div>
                 );
             })}
